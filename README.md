@@ -8,4 +8,4 @@ A little about me:
 - I am taking STATS 220 because I am doing a minor in Data Analysis and am very interested in that field!
 - I am interested in learning about how to identify patterns in the real world using statistical programming
 
-A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+A meme that captures how I currently feel about my university studies is ![](https://media.tenor.com/i5TRPkSTPrwAAAAM/chenongyun-cat.gif)
