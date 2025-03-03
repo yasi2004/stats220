@@ -10,4 +10,4 @@ A little about me:
 
 A meme that captures how I currently feel about my university studies is:
 
-![](https://media.tenor.com/i5TRPkSTPrwAAAAM/chenongyun-cat.gif)
+![](https://media1.tenor.com/m/goRrUiPLo0IAAAAd/knife-cat-cat-knife.gif)
