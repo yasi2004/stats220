@@ -14,4 +14,4 @@
 
 A meme that captures how I currently feel about my university studies is:
 
-![](https://media1.tenor.com/m/goRrUiPLo0IAAAAd/knife-cat-cat-knife.gif)
+![](https://media.tenor.com/epePZgcYYQ8AAAAM/cat-lazy-cat.gif)
