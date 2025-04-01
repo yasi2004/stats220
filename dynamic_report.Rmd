@@ -1,0 +1,86 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSRjz0YGckkevoZyIPk5hvMtdQgQo3CvDLjm7PN4mZTiTBr25JHKWbcN4o33ZJZb4MPeHOzl4qzwje0/pub?output=csv")
+
+latest_data <- logged_data %>% 
+  rename(
+    date = 1,
+    ad_type = 2,
+    times_seen = 3,
+    brand = 4
+  )
+
+# Summary values
+num_responses <- nrow(latest_data)
+mean_seen <- mean(latest_data$times_seen)
+max_seen <- max(latest_data$times_seen)
+```
+
+```{css}
+/* Simple CSS styling */
+h2 {
+  color: #003366;
+  border-bottom: 2px solid #003366;
+  padding-bottom: 5px;
+}
+
+p {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.plot-caption {
+  font-style: italic;
+  font-size: 14px;
+  margin-top: -10px;
+}
+```
+
+## What kinds of ads are people seeing?
+
+This report uses the data gained from my Google Form responses about advertisements on Instagram I have seen. Each response tracks the type of product, how often the ad was seen, and the brand it advertised.
+
+There were  **`r num_responses`** responses in total.
+
+On average, we saw each ad about **`r round(mean_seen, 1)`** times, with the most frequently seen ad viewed **`r max_seen`** times.
+
+### Ad types: What products are most advertised?
+
+```{r}
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(x = ad_type), fill = "#6495ED") +
+  labs(title = "Number of Ads by Product Type",
+       x = "Product Type",
+       y = "Count",
+       caption = "Source: Google Form Responses") +
+  theme_minimal()
+```
+
+<p class="plot-caption">This chart shows which types of products appeared most often in the reported ads.</p>
+
+### Top brands: Who's advertising the most?
+
+```{r}
+latest_data %>%
+  count(brand, sort = TRUE) %>%
+  slice(1:10) %>%
+  ggplot() +
+  geom_bar(aes(x = reorder(brand, -n), y = n), stat = "identity", fill = "#FFA07A") +
+  labs(title = "Top 10 Most Frequently Advertised Brands",
+       x = "Brand",
+       y = "Number of Mentions",
+       caption = "Source: Google Form Responses") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+<p class="plot-caption">This chart highlights the ten brands most frequently mentioned in the dataset.</p>
