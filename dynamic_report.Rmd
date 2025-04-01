@@ -17,7 +17,6 @@ latest_data <- logged_data %>%
     brand = 4
   )
 
-# Summary values
 num_responses <- nrow(latest_data)
 mean_seen <- mean(latest_data$times_seen)
 max_seen <- max(latest_data$times_seen)
@@ -30,27 +29,24 @@ h2 {
   border-bottom: 2px solid #003366;
   padding-bottom: 5px;
 }
-
 p {
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
-
 .plot-caption {
   font-style: italic;
   font-size: 14px;
-  margin-top: -10px;
 }
 ```
 
 ## What kinds of ads are people seeing?
 
-This report uses the data gained from my Google Form responses about advertisements on Instagram I have seen. Each response tracks the type of product, how often the ad was seen, and the brand it advertised.
+This report uses data from a Google Form where people recorded Instagram ads they saw, including the product type, brand, and how many times they saw it.
 
-There were  **`r num_responses`** responses in total.
+There were **`r num_responses`** responses.
 
-On average, we saw each ad about **`r round(mean_seen, 1)`** times, with the most frequently seen ad viewed **`r max_seen`** times.
+On average, people saw each ad **`r round(mean_seen, 1)`** times — with the most frequently seen ad shown **`r max_seen`** times.
 
 ### Ad types: What products are most advertised?
 
@@ -65,7 +61,7 @@ latest_data %>%
   theme_minimal()
 ```
 
-<p class="plot-caption">This chart shows which types of products appeared most often in the reported ads.</p>
+*This chart shows which types of products appeared most often in the reported ads.*
 
 ### Top brands: Who's advertising the most?
 
@@ -83,4 +79,4 @@ latest_data %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-<p class="plot-caption">This chart highlights the ten brands most frequently mentioned in the dataset.</p>
+*These are the ten brands that appeared most frequently in the data.*
