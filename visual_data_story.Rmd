@@ -1,0 +1,132 @@
+---
+title: Ad Frequency and Product Types
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+/* Page background and text */
+body {
+  background-color: #dfece6;  /* Light green background */
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #2e2e2e;  /* Dark text color */
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header styles */
+h2 {
+  border: 1px solid #9ab89c;  /* Light green border */
+  border-left: 5px solid #7d9d87;  /* Darker green for the left border */
+  padding: 10px;
+  background-color: #eef4f0;  /* Very light green background */
+  margin-top: 40px;
+  color: #375540;  /* Dark green text for headers */
+}
+
+/* Paragraph styling */
+p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Code blocks */
+pre, code {
+  background-color: #f4f8f6;  /* Light gray background for code */
+  border: 1px solid #c5d8ce;  /* Subtle gray border */
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Link styling */
+a {
+  color: #5b8e7d;  /* Muted green for links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Plots and images styling */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #9ab89c;  /* Light green border */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.plot {
+  background-color: #eef4f0;  /* Light green background for plots */
+  border: 2px solid #9ab89c;  /* Light green border for plots */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Text content */
+h1, h2 {
+  color: #375540;  /* Dark green for headers */
+}
+
+h3 {
+  color: #375540;  /* Dark green for sub-headers */
+}
+
+```
+
+## What's going on with this data?
+
+This report visualizes the frequency and ad views across various product types. The data were collected through observational logging, focusing on the types of products being advertised and how frequently they were seen.
+
+## Product Types Frequency
+
+![**Bar plot of Product Types**](plot1.png)
+
+The bar plot shows the frequency of different product types. As we can see, certain product types such as Technology and Beauty/Skincare have higher occurrences, indicating more advertising activity in these categories.
+
+## Ad Frequency by Product Type
+
+![**Box plot of Ad Frequency**](plot2.png)
+
+This box plot shows the distribution of how many times each product ad was seen. It gives us insight into the variance in ad frequency for different product categories.
+
+
+## Average Ad Views Over Time
+
+![**Line plot of Ad Views**](plot3.png)
+
+The line plot above displays the average views per day of the week. It helps to understand how ad frequency varies throughout the week, with some days likely seeing more ads due to market trends or campaign strategies.
+
+## Conclusion
+
+From the visualizations, we gain insights into ad frequency, product type popularity, and temporal trends. The data and these plots help inform future ad strategies, focusing on the most impactful product categories and times for optimal engagement.
+
+
+
